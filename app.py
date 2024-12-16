@@ -14,9 +14,15 @@ def main():
     magazine_category = input("Enter magazine category: ")
     article_title = input("Enter article title: ")
     article_content = input("Enter article content: ")
-
+    
     # Connect to the database
     conn = get_db_connection()
+
+    author = Author(name=author_name)
+    # magazine = Magazine(name=magazine_name, category=magazine_category)
+    
+    # article = Article(title=article_title, content=article_content, author=author, magazine=magazine)
+
     cursor = conn.cursor()
 
 
@@ -25,7 +31,6 @@ def main():
         you can modify it to meet the requirements of your implmentation.
     '''
 
-    # Create an author
     cursor.execute('INSERT INTO authors (name) VALUES (?)', (author_name,))
     author_id = cursor.lastrowid # Use this to fetch the id of the newly created author
 
